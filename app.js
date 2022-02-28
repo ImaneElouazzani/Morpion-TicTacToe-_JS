@@ -33,15 +33,12 @@ function clicSurCase(e){
 
     partieEnCours[caseIndex] = joueurEnCours
     caseClique.innerHTML = joueurEnCours
-    console.log(partieEnCours)
     validationResultats()
-    //changementDeJoueur()
 }
 
 function validationResultats(){
 
     let finDePartie = false
-    console.log(alignementsGagnants)
 
     for(let i = 0; i < alignementsGagnants.length; i++){
         const checkWin = alignementsGagnants[i]
@@ -59,7 +56,15 @@ function validationResultats(){
         }
     }
     if(finDePartie){
-        info.innerText = `🎉🎉Le joueur ${joueurEnCours} a gagné 🎉🎉`
+        info.innerText = `🎉Le joueur ${joueurEnCours} a gagné 🤩 🥳🎉`
+        verouillage = false
+        return // le return sorte de la fonction complètement
+    }
+
+    // si il n y a pas de chaine de caractères vides dans partie en cours
+    let matchNul = !partieEnCours.includes('')
+    if(matchNul){
+        info.innerText = 'Match nul 👎 ☹️ '
         verouillage = false
         return
     }
